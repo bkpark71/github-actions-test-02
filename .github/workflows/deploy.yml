@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Github Repository 의 파일 가져오기
+      - name: Github Repository 의 파일 가져오기   
         uses: actions/checkout@v4
 
       - name: JDK 17 설치
