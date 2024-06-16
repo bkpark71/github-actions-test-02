@@ -20,11 +20,8 @@ jobs:
           java-version: 17
 
       - name: application.yml 파일 생성
-        env:
-          APPLICATION_PROPERTIES: ${{ secrets.APPLICATION_PROPERTIES }}
         run: |
-          rm -rf src/main/resources/application.yml
-          echo "$APPLICATION_PROPERTIES" > ./src/main/resources/application.yml
+          echo "${{ secrets.APPLICATION_PROPERTIES }}" > ./src/main/resources/application.yml
           cat ./src/main/resources/application.yml
 
       - name: 빌드하기
