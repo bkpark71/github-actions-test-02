@@ -39,18 +39,18 @@ jobs:
           source: project.jar
           target: /home/ubuntu/project-server/tobe
 
-      - name: SSH로 EC2에 접속하기
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_PRIVATE_KEY }}
-          script_stop: true
-          script: |
-            rm -rf /home/ubuntu/project-server/cur
-            mkdir /home/ubuntu/project-server/cur
-            mv /home/ubuntu/project-server/tobe/project.jar /home/ubuntu/project-server/cur/project.jar
-            cd /home/ubuntu/project-server/cur
-            sudo fuser -k -n tcp 8080 || true
-            nohup java -jar project.jar > ./output.log 2>&1 & 
-            rm -rf /home/ubuntu/project-/tobe
+#      - name: SSH로 EC2에 접속하기
+#        uses: appleboy/ssh-action@v1.0.3
+#        with:
+#          host: ${{ secrets.EC2_HOST }}
+#          username: ${{ secrets.EC2_USERNAME }}
+#          key: ${{ secrets.EC2_PRIVATE_KEY }}
+#          script_stop: true
+#          script: |
+#            rm -rf /home/ubuntu/project-server/cur
+#            mkdir /home/ubuntu/project-server/cur
+#            mv /home/ubuntu/project-server/tobe/project.jar /home/ubuntu/project-server/cur/project.jar
+#            cd /home/ubuntu/project-server/cur
+#            sudo fuser -k -n tcp 8080 || true
+#            nohup java -jar project.jar > ./output.log 2>&1 &
+#            rm -rf /home/ubuntu/project-/tobe
